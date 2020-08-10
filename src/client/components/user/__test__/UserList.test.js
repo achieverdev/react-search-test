@@ -1,9 +1,16 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import Enzyme, { shallow, mount } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import configureStore from 'redux-mock-store';
 import UserList from '../UserList';
+import { Provider } from 'react-redux';
 
-test('5. UserList App componnet .', () => {
-  const { getByText } = render(<UserList />);
-  const linkElement = getByText(/Please search !/i);
-  expect(linkElement).toBeInTheDocument();
+Enzyme.configure({ adapter: new Adapter() });
+
+const mockStore = configureStore();
+
+it('UserList run without crashing', () => {
+  const userStore = mockStore({});
+  const component = shallow(<Provider store={userStore}><UserList /></Provider>, {store: userStore});
+  expect(component.find(UserList)).toBeDefined();
 });

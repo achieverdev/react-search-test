@@ -1,9 +1,18 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import Enzyme, { shallow, mount } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import configureStore from 'redux-mock-store';
 import UserItem from '../UserItem';
+import { Provider } from 'react-redux';
 
-test('4. UserItem App componnet .', () => {
-  const { getByText } = render(<UserItem />);
-  const linkElement = getByText(/Edit/i);
-  expect(linkElement).toBeInTheDocument();
+Enzyme.configure({ adapter: new Adapter() });
+
+const mockStore = configureStore();
+
+describe('UserItem module case--->', () => {
+  it('UserItem run without crashing', () => {
+    const userStore = mockStore({});
+    const component = shallow(<Provider store={userStore}><UserItem /></Provider>, {store: userStore});
+    expect(component.find(UserItem)).toBeDefined();
+  });
 });
