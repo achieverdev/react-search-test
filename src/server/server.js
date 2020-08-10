@@ -1,30 +1,12 @@
-const express = require("express"),
-  app = express(),
-  port = process.env.PORT || 5000,
-  cors = require("cors");
-const axios = require('axios')
+const express = require('express');
+const cors = require('cors');
+const port = process.env.PORT || 5000;
+const app = express();
+
 app.use(cors());
 
-app.get('/users',  async function (req, res, next) {
-  try {
-      let result = await getUser();
-      res.send(result)
-    } catch (err) {
-      console.log(err, 'error ');
-      next(err);
-    }
-})
+const postListMethods = require('./api/controllers/PostsList');
 
-const getUser = async () => {
-  try {
-    const posts = await axios.get(`https://jsonplaceholder.typicode.com/posts`);
-    return ({ status: true, code: 200, message: 'Post Found', users: posts.data})
-  } catch (error) {
-    return ({ status: false, code: 404, message: 'Not Found', users: []})
-}
-
-
-}
-
-
+app.get('/users', postListMethods.getPostsList);
+ 
 app.listen(port, () => console.log("Backend server live on " + port));

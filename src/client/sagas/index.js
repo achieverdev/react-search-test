@@ -5,7 +5,7 @@ import ENUMS from '../../client/config/ENUMS';
 function* fetchUsers() {
   const userList = yield fetch(`${ENUMS.ENDPOINT.URL}${ENUMS.ENDPOINT.USERS}`)
     .then(response => response.json());
-  yield put({ type: LIST_USER, user_data:userList.users });
+  yield put({ type: LIST_USER, user_data:userList.data });
 }
 
 function* actionWatcher() {
