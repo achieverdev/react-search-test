@@ -1,16 +1,13 @@
 import React from 'react';
-import Enzyme, { shallow, mount } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import configureStore from 'redux-mock-store';
+import { render } from '@testing-library/react';
 import UserList from '../UserList';
-import { Provider } from 'react-redux';
+import MockProvider from '../../../config/mocks/MockProvider';
 
-Enzyme.configure({ adapter: new Adapter() });
-
-const mockStore = configureStore();
-
-it('UserList run without crashing', () => {
-  const userStore = mockStore({});
-  const component = shallow(<Provider store={userStore}><UserList /></Provider>, {store: userStore});
-  expect(component.find(UserList)).toBeDefined();
+test('UserList App componnet .', () => {
+  const List = render(
+    <MockProvider>
+      <UserList users={{ id: 1, title: 'Post Title', body: 'Post Body' }} />
+    </MockProvider>
+  );
+  expect(List.container).toBeTruthy();
 });

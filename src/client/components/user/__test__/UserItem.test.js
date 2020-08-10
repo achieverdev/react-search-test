@@ -1,18 +1,19 @@
+
 import React from 'react';
-import Enzyme, { shallow, mount } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import configureStore from 'redux-mock-store';
+import { render } from '@testing-library/react';
 import UserItem from '../UserItem';
-import { Provider } from 'react-redux';
+import MockProvider from '../../../config/mocks/MockProvider';
+import { createBrowserHistory } from "history";
+import { Router } from 'react-router-dom';
+const webHistory = createBrowserHistory();
 
-Enzyme.configure({ adapter: new Adapter() });
-
-const mockStore = configureStore();
-
-describe('UserItem module case--->', () => {
-  it('UserItem run without crashing', () => {
-    const userStore = mockStore({});
-    const component = shallow(<Provider store={userStore}><UserItem /></Provider>, {store: userStore});
-    expect(component.find(UserItem)).toBeDefined();
-  });
+test('UserList App componnet .', () => {
+  const UserItemComp = render(
+    <MockProvider>
+      <Router history={webHistory}>
+        <UserItem user={{ id: 1, title: 'Post Title', body: 'Post Body' }} ></UserItem>
+      </Router>
+    </MockProvider>
+  );
+  expect(UserItemComp.container).toBeTruthy();
 });

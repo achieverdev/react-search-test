@@ -12,7 +12,7 @@ function Search(props) {
   const [usersData, updateUserData] = useState(users);
 
   useEffect(() => {
-    if (users.length === 0) {
+    if (users && users.length === 0) {
       getData();
     }
   });
