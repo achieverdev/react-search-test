@@ -9,7 +9,7 @@ import UserForm from '../../components/user/UserForm';
 import ENUMS from '../../config/ENUMS';
 
 function User(props) {
-  const editItemId = props.match.params.id;
+  const editItemId = props && props.match && props.match.params && props.match.params.id;
   const {users, editUser, getData, history} = props;
   const getUser = (editItemId) => {
     if (users.length === 0) {
