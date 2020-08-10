@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function SearchInput(props) {
   const searchRef = React.createRef();
@@ -17,5 +18,9 @@ function SearchInput(props) {
     </div>
   )
 }
+
+SearchInput.propTypes = {
+  filterData: PropTypes.array
+};
 
 export default SearchInput;

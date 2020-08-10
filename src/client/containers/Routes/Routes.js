@@ -5,8 +5,8 @@ import {
 } from 'react-router-dom';
 import ENUMS from '../../config/ENUMS';
 
-const UserForm = lazy(() => import('../user'));
-const App = lazy(() => import('../App'));
+const UserForm = lazy(() => import('../User/User'));
+const App = lazy(() => import('../App/App'));
 
 function AppRoutes() {
   return (

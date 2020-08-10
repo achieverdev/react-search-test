@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Router } from 'react-router-dom';
 import store from './client/redux/store';
 import { Provider } from 'react-redux';
-import AppRoutes from './client/containers/Routes';
+import AppRoutes from './client/containers/Routes/Routes';
 import { createBrowserHistory } from "history";
 import * as serviceWorker from './client/serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';

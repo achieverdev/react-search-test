@@ -1,6 +1,7 @@
 import React from "react";
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 
 const UserForm = (props) => {
@@ -46,4 +47,10 @@ const UserForm = (props) => {
     </Formik>
   );
 }
+
+UserForm.propTypes = {
+  editItem: PropTypes.object,
+  editUser: PropTypes.func
+};
+
 export default UserForm;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import SearchView from '../search';
+import SearchView from '../Search/Search';
 import './App.css';
 
 function AppMain() {

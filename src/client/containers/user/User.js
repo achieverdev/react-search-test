@@ -2,12 +2,13 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { Container, Col, Row } from 'react-bootstrap';
 import { getData, editUser } from "../../redux/actions";
-import ENUMS from '../../config/ENUMS';
 import UserForm from '../../components/user/UserForm';
+import ENUMS from '../../config/ENUMS';
 
-function UserFormContainer(props) {
+function User(props) {
   const editItemId = props.match.params.id;
   const {users, editUser, getData, history} = props;
   const getUser = (editItemId) => {
@@ -55,8 +56,13 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 }, dispatch);
 
 const mapStateToProps = (state) => ({
-  users: state.user.user_data,
-  search_result: state.user.search_result
+  users: state.user.user_data
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(UserFormContainer));
+User.propTypes = {
+  editUser: PropTypes.func,
+  getData: PropTypes.func,
+  users: PropTypes.array
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(User));

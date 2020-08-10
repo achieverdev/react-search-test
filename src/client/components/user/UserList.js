@@ -1,6 +1,8 @@
 import React from "react";
-import User from "./UserItem";
+import PropTypes from 'prop-types';
 import { Row } from 'react-bootstrap';
+import User from "./UserItem";
+
 const UserList = (props) => {
   const {users} = props;
   return (
@@ -14,4 +16,7 @@ const UserList = (props) => {
   );
 }
 
+UserList.propTypes = {
+  users: PropTypes.array.isRequired
+};
 export default UserList;

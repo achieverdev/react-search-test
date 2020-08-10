@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Container, Col, Row } from 'react-bootstrap';
 import UserList from '../../components/user/UserList';
 import SearchInput from '../../components/search/SearchInput';
 import { getData, setFilter } from "../../redux/actions";
-import user from '../user';
 
-function SearchView(props) {
+function Search(props) {
   const { loading, users, getData, searchData} = props;
   const [usersData, updateUserData] = useState(users);
 
@@ -64,8 +64,7 @@ function SearchView(props) {
 
 const mapStateToProps = (state) => ({
   users: state.user.user_data,
-  loading: state.user.loading,
-  search_result: state.user.search_result
+  loading: state.user.loading
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
@@ -73,5 +72,12 @@ const mapDispatchToProps = dispatch => bindActionCreators({
   getData: getData
 }, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchView);
+Search.propTypes = {
+  searchData: PropTypes.func,
+  getData: PropTypes.func,
+  users: PropTypes.array.isRequired,
+  loading: PropTypes.bool
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);
 
