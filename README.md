@@ -1,5 +1,5 @@
 ## Preview application
-![Alt text](preview.png?raw=true "Title")
+![Alt text](preview.png?raw=true "Application Review")
 
 ## Available Scripts
 
@@ -21,6 +21,10 @@ You will also see any lint errors in the console.
 
 Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run api:test`
+API test by mocha, chai, nock 
+![Alt text](api-test-result.png?raw=true "API test")
 
 ### `npm run build`
 
