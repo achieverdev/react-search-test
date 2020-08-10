@@ -1,4 +1,4 @@
-import { GET_DATA, EDIT_USER, SET_FILTER } from "./actionTypes";
+import { GET_DATA, EDIT_USER } from "./actionTypes";
 
 export const editUser = data => ({
   type: EDIT_USER,
@@ -9,9 +9,4 @@ export const editUser = data => ({
 
 export const getData = () => ({
   type: GET_DATA
-});
-
-export const setFilter = (search) => ({ 
-  type: SET_FILTER, 
-  payload: { search } 
 });

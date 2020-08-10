@@ -5,10 +5,10 @@ import PropTypes from 'prop-types';
 import { Container, Col, Row } from 'react-bootstrap';
 import UserList from '../../components/user/UserList';
 import SearchInput from '../../components/search/SearchInput';
-import { getData, setFilter } from "../../redux/actions";
+import { getData } from "../../redux/actions";
 
 function Search(props) {
-  const { loading, users, getData, searchData} = props;
+  const { loading, users, getData } = props;
   const [usersData, updateUserData] = useState(users);
 
   useEffect(() => {
@@ -49,7 +49,7 @@ function Search(props) {
     <Container>
       <Row className='search-view p-2 text-center'>
         <Col>
-          <SearchInput users={users} searchData={searchData} filterData={filterData}></SearchInput>
+          <SearchInput users={users} filterData={filterData}></SearchInput>
         </Col>
       </Row>
       <Row>
@@ -68,12 +68,10 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  searchData: setFilter,
   getData: getData
 }, dispatch);
 
 Search.propTypes = {
-  searchData: PropTypes.func,
   getData: PropTypes.func,
   users: PropTypes.array.isRequired,
   loading: PropTypes.bool

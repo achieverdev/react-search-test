@@ -1,4 +1,4 @@
-import { EDIT_USER, LIST_USER,GET_DATA, SET_FILTER } from "../actionTypes";
+import { EDIT_USER, LIST_USER,GET_DATA } from "../actionTypes";
 
 const initialState = {
   loading: true,
@@ -33,19 +33,7 @@ const userReducers = (state = initialState, action) => {
         loading: false
       };
     }
-    case SET_FILTER: {
-      const { search } = action.payload;
-      let newUserCopy = [...state.user_data];
-      let searchResult = [];
-      newUserCopy.forEach((element) =>{
-        element.title && element.title.indexOf(search) >= 0 && searchResult.push(element)
-      });
-      return {
-        ...state,
-        search_result: searchResult,
-        loading: false
-      };
-    }
+    
     default:
       return state;
   }
